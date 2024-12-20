@@ -8819,12 +8819,18 @@
         }
       },
       "links": {},
-      "address": "0x2483Fb7cFe6f9dEB52f46Dc0109edE2319508790",
-      "transactionHash": "0x037318dc5c1a3b37da0d3e8b57938d211204cc330ff454b684639c68f53aec2b"
+      "address": "0xaAb06DCA5af2294A7e7BAF1DBB2cDe9501E9905d",
+      "transactionHash": "0xd2821bbeb3fb3288ca04210b189d20ef8c596b0168ce8ec37f335c92af66bc46"
+    },
+    "11155111": {
+      "events": {},
+      "links": {},
+      "address": "0xf5c01B473202E1c1973b1D1Ee5753990362CdA01",
+      "transactionHash": "0x1395dea00f4a10408c826e77d9701cf15dfc3f047c9f4a3463420fa95608cc86"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-06-20T13:27:15.981Z",
+  "updatedAt": "2024-11-05T08:42:05.550Z",
   "networkType": "ethereum",
   "devdoc": {
     "events": {

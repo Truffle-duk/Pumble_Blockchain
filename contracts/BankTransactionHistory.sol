@@ -2,8 +2,8 @@
 pragma solidity 0.8.18;
 
 contract BankTransactionHistory{
-    event TransactionCreated(string indexed hGroupId, string groupId, uint256 transactionIndex, bool isDeposit, uint256 amount, string counterparty, string description, uint256 timestamp, string receiptDetails);
-    event RetrieveBalance(string indexed hGroupId, string groupId, uint256 balance);
+    event TransactionCreated(string indexed hGroupId, string indexed category, string groupId, uint256 transactionIndex, bool isDeposit, uint256 amount, string counterparty, string description, uint256 timestamp, string receiptDetails);
+    event RetrieveBalance(string indexed hGroupId, string indexed category, string groupId, uint256 balance);
 
     struct Transaction {
         uint256 amount;
@@ -54,8 +54,8 @@ contract BankTransactionHistory{
             receiptDetails:""
         }));
 
-        emit TransactionCreated(_groupId, _groupId, transactions[uuidHash].length - 1, true, _amount, _counterparty, _description, block.timestamp, "");
-        emit RetrieveBalance(_groupId, _groupId, groups[uuidHash].balance);
+        emit TransactionCreated(_groupId, "ledger", _groupId, transactions[uuidHash].length - 1, true, _amount, _counterparty, _description, block.timestamp, "");
+        emit RetrieveBalance(_groupId, "ledger", _groupId, groups[uuidHash].balance);
     }
 
     // 출금 기록
@@ -73,8 +73,8 @@ contract BankTransactionHistory{
             receiptDetails:""
         }));
 
-        emit TransactionCreated(_groupId, _groupId, transactions[uuidHash].length - 1, false, _amount, _counterparty, _description, block.timestamp, "");
-        emit RetrieveBalance(_groupId, _groupId, groups[uuidHash].balance);
+        emit TransactionCreated(_groupId, "ledger", _groupId, transactions[uuidHash].length - 1, false, _amount, _counterparty, _description, block.timestamp, "");
+        emit RetrieveBalance(_groupId, "ledger", _groupId, groups[uuidHash].balance);
     }
 
     // 영수증 세부 항목 업데이트
@@ -86,7 +86,7 @@ contract BankTransactionHistory{
         Transaction storage transactionToUpdate = transactions[uuidHash][_transactionIndex];
         transactionToUpdate.receiptDetails = _receiptDetails;
 
-        emit TransactionCreated(_groupId, _groupId, _transactionIndex, transactionToUpdate.isDeposit, transactionToUpdate.amount, transactionToUpdate.counterparty, transactionToUpdate.description, block.timestamp, _receiptDetails);
+        emit TransactionCreated(_groupId, "ledger", _groupId, _transactionIndex, transactionToUpdate.isDeposit, transactionToUpdate.amount, transactionToUpdate.counterparty, transactionToUpdate.description, block.timestamp, _receiptDetails);
     }
 
 }
